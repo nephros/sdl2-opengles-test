@@ -29,7 +29,7 @@
 
 #include "common.h"
 
-#include <SDL_ttf.h>
+#include <SDL3_ttf/SDL_ttf.h>
 
 struct Size {
     Size() : w(0), h(0) {}

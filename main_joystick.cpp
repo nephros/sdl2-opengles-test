@@ -29,8 +29,8 @@
 
 #include "common.h"
 
-#include <SDL_ttf.h>
-#include <SDL_joystick.h>
+#include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3/SDL_joystick.h>
 
 struct Size {
     Size() : w(0), h(0) {}

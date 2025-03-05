@@ -29,7 +29,7 @@
 
 #include "common.h"
 
-#include <SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 
 class SDL3TestApplicationImage : public SDL3TestApplication {
     public:

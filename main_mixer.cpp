@@ -29,7 +29,7 @@
 
 #include "common.h"
 
-#include <SDL_mixer.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 #include <audioresource.h>
 #include <glib.h>
