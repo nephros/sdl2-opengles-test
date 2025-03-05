@@ -29,7 +29,7 @@
 
 #include <stdlib.h>
 
-SDL2TestApplication::SDL2TestApplication(int major, int minor)
+SDL3TestApplication::SDL3TestApplication(int major, int minor)
     : m_major(major)
     , m_minor(minor)
     , m_window(NULL)
@@ -38,7 +38,7 @@ SDL2TestApplication::SDL2TestApplication(int major, int minor)
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 }
 
-SDL2TestApplication::~SDL2TestApplication()
+SDL3TestApplication::~SDL3TestApplication()
 {
     std::list<TouchPoint*>::iterator it;
     for (it=m_touches.begin(); it != m_touches.end(); ++it) {
@@ -47,7 +47,7 @@ SDL2TestApplication::~SDL2TestApplication()
 }
 
 void
-SDL2TestApplication::for_each_touch(touch_point_func f, void *user_data)
+SDL3TestApplication::for_each_touch(touch_point_func f, void *user_data)
 {
     std::list<TouchPoint*>::iterator it;
     for (it=m_touches.begin(); it != m_touches.end(); ++it) {
@@ -56,13 +56,11 @@ SDL2TestApplication::for_each_touch(touch_point_func f, void *user_data)
 }
 
 int
-SDL2TestApplication::run()
+SDL3TestApplication::run()
 {
-    m_window = SDL_CreateWindow("SDL2TestApplication",
-            SDL_WINDOWPOS_CENTERED,
-            SDL_WINDOWPOS_CENTERED, 
+    m_window = SDL_CreateWindow("SDL3TestApplication",
             0, 0,
-            SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN);
+            SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN);
 
     if (m_window == NULL) {
         printf("Could not create window: %s\n", SDL_GetError());
@@ -105,9 +103,10 @@ SDL2TestApplication::run()
     while (!quit) {
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
-                case SDL_QUIT:
+                case SDL_EVENT_QUIT:
                     quit = 1;
                     break;
+                /* TODO: Handle SDL3
                 case SDL_DISPLAYEVENT:
                     printf("Display: %u event: %d (%d)\n", event.display.display,
                             event.window.event, event.display.data1);
@@ -116,8 +115,9 @@ SDL2TestApplication::run()
                     printf("Window event: %d (%d, %d)\n", event.window.event,
                             event.window.data1, event.window.data2);
                     break;
-                case SDL_FINGERDOWN:
-                    touch = new TouchPoint(event.tfinger.fingerId,
+                */
+                case SDL_EVENT_FINGER_DOWN:
+                    touch = new TouchPoint(event.tfinger.fingerID,
 #if SDL_VERSION_ATLEAST(2, 0, 16)
                             event.tfinger.x * w, event.tfinger.y * h);
 #else
@@ -127,12 +127,12 @@ SDL2TestApplication::run()
                     onPressed(touch);
                     printf("Finger down: (%.2f, %.2f)\n", touch->x, touch->y);
                     break;
-                case SDL_FINGERUP:
-                case SDL_FINGERMOTION:
+                case SDL_EVENT_FINGER_UP:
+                case SDL_EVENT_FINGER_MOTION:
                     for (it=m_touches.begin(); it != m_touches.end(); ++it) {
                         touch = *it;
-                        if (touch->id == event.tfinger.fingerId) {
-                            if (event.type == SDL_FINGERMOTION) {
+                        if (touch->id == event.tfinger.fingerID) {
+                            if (event.type == SDL_EVENT_FINGER_MOTION) {
 #if SDL_VERSION_ATLEAST(2, 0, 16)
                                 touch->x = event.tfinger.x * w;
                                 touch->y = event.tfinger.y * h;
@@ -166,7 +166,7 @@ SDL2TestApplication::run()
         SDL_Delay(10);
     }
 
-    SDL_GL_DeleteContext(m_gl_context);
+    SDL_GL_DestroyContext(m_gl_context);
     SDL_DestroyWindow(m_window);
     SDL_Quit();
 

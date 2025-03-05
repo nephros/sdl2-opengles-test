@@ -31,9 +31,9 @@
 
 #include <SDL_image.h>
 
-class SDL2TestApplicationImage : public SDL2TestApplication {
+class SDL3TestApplicationImage : public SDL3TestApplication {
     public:
-        SDL2TestApplicationImage();
+        SDL3TestApplicationImage();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
@@ -46,8 +46,8 @@ class SDL2TestApplicationImage : public SDL2TestApplication {
         int height;
 };
 
-SDL2TestApplicationImage::SDL2TestApplicationImage()
-    : SDL2TestApplication(1, 1)
+SDL3TestApplicationImage::SDL3TestApplicationImage()
+    : SDL3TestApplication(1, 1)
     , texture_from_png(0)
     , texture_from_jpg(0)
     , width(0)
@@ -125,7 +125,7 @@ textureFromImage(const char *filename, enum TextureImage::Format format)
 }
 
 void
-SDL2TestApplicationImage::initGL()
+SDL3TestApplicationImage::initGL()
 {
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -146,7 +146,7 @@ SDL2TestApplicationImage::initGL()
 }
 
 void
-SDL2TestApplicationImage::resizeGL(int width, int height)
+SDL3TestApplicationImage::resizeGL(int width, int height)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -181,7 +181,7 @@ draw_touch_point(TouchPoint *touch, void *user_data)
 }
 
 void
-SDL2TestApplicationImage::renderGL()
+SDL3TestApplicationImage::renderGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -215,7 +215,7 @@ SDL2TestApplicationImage::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationImage testapp_image;
+    SDL3TestApplicationImage testapp_image;
     return testapp_image.run();
 }
 

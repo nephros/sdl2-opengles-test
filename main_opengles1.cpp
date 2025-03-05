@@ -29,28 +29,28 @@
 
 #include "common.h"
 
-class SDL2TestApplicationGLESv1 : public SDL2TestApplication {
+class SDL3TestApplicationGLESv1 : public SDL3TestApplication {
     public:
-        SDL2TestApplicationGLESv1();
+        SDL3TestApplicationGLESv1();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
         virtual void renderGL();
 };
 
-SDL2TestApplicationGLESv1::SDL2TestApplicationGLESv1()
-    : SDL2TestApplication(1, 1)
+SDL3TestApplicationGLESv1::SDL3TestApplicationGLESv1()
+    : SDL3TestApplication(1, 1)
 {
 }
 
 void
-SDL2TestApplicationGLESv1::initGL()
+SDL3TestApplicationGLESv1::initGL()
 {
     glClearColor(0.3, 0.3, 0.6, 1.0);
 }
 
 void
-SDL2TestApplicationGLESv1::resizeGL(int width, int height)
+SDL3TestApplicationGLESv1::resizeGL(int width, int height)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -74,7 +74,7 @@ draw_touch_point(TouchPoint *touch, void *user_data)
 }
 
 void
-SDL2TestApplicationGLESv1::renderGL()
+SDL3TestApplicationGLESv1::renderGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -91,7 +91,7 @@ SDL2TestApplicationGLESv1::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationGLESv1 testapp_glesv1;
+    SDL3TestApplicationGLESv1 testapp_glesv1;
     return testapp_glesv1.run();
 }
 

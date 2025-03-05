@@ -27,9 +27,9 @@
 
 #include "common.h"
 
-class SDL2TestApplicationRenderer : public SDL2TestApplication {
+class SDL3TestApplicationRenderer : public SDL3TestApplication {
     public:
-        SDL2TestApplicationRenderer();
+        SDL3TestApplicationRenderer();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
@@ -39,14 +39,14 @@ class SDL2TestApplicationRenderer : public SDL2TestApplication {
         SDL_Renderer *m_renderer;
 };
 
-SDL2TestApplicationRenderer::SDL2TestApplicationRenderer()
-    : SDL2TestApplication(0, 0)
+SDL3TestApplicationRenderer::SDL3TestApplicationRenderer()
+    : SDL3TestApplication(0, 0)
     , m_renderer(NULL)
 {
 }
 
 void
-SDL2TestApplicationRenderer::initGL()
+SDL3TestApplicationRenderer::initGL()
 {
     m_renderer = SDL_CreateRenderer(m_window, -1,
             SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
@@ -60,12 +60,12 @@ SDL2TestApplicationRenderer::initGL()
 }
 
 void
-SDL2TestApplicationRenderer::resizeGL(int width, int height)
+SDL3TestApplicationRenderer::resizeGL(int width, int height)
 {
 }
 
 void
-SDL2TestApplicationRenderer::renderGL()
+SDL3TestApplicationRenderer::renderGL()
 {
     SDL_SetRenderDrawColor(m_renderer, 128, 64, 32, 255);
     SDL_RenderClear(m_renderer);
@@ -75,7 +75,7 @@ SDL2TestApplicationRenderer::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationRenderer testapp_image;
+    SDL3TestApplicationRenderer testapp_image;
     return testapp_image.run();
 }
 

@@ -34,9 +34,9 @@
 #include <audioresource.h>
 #include <glib.h>
 
-class SDL2TestApplicationMixer : public SDL2TestApplication {
+class SDL3TestApplicationMixer : public SDL3TestApplication {
     public:
-        SDL2TestApplicationMixer();
+        SDL3TestApplicationMixer();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
@@ -65,7 +65,7 @@ on_audio_resource_acquired(audioresource_t *audio_resource, bool acquired, void 
      * as a different media player or phone call comes in).
      **/
 
-    SDL2TestApplicationMixer *app = static_cast<SDL2TestApplicationMixer *>(user_data);
+    SDL3TestApplicationMixer *app = static_cast<SDL3TestApplicationMixer *>(user_data);
 
     if (acquired && !app->mix_opened) {
         fprintf(stderr, "Audio resource acquired.\n");
@@ -89,8 +89,8 @@ on_audio_resource_acquired(audioresource_t *audio_resource, bool acquired, void 
 }
 
 
-SDL2TestApplicationMixer::SDL2TestApplicationMixer()
-    : SDL2TestApplication(1, 1)
+SDL3TestApplicationMixer::SDL3TestApplicationMixer()
+    : SDL3TestApplication(1, 1)
     , sample(NULL)
     , audio_resource(NULL)
     , mix_opened(false)
@@ -103,7 +103,7 @@ SDL2TestApplicationMixer::SDL2TestApplicationMixer()
 }
 
 void
-SDL2TestApplicationMixer::initGL()
+SDL3TestApplicationMixer::initGL()
 {
     glClearColor(0.9, 0.3, 0.0, 1.0);
 
@@ -136,19 +136,19 @@ SDL2TestApplicationMixer::initGL()
 }
 
 void
-SDL2TestApplicationMixer::resizeGL(int width, int height)
+SDL3TestApplicationMixer::resizeGL(int width, int height)
 {
 }
 
 void
-SDL2TestApplicationMixer::onPressed(TouchPoint *touch)
+SDL3TestApplicationMixer::onPressed(TouchPoint *touch)
 {
     // Play sample
     Mix_PlayChannel(-1, sample, 0);
 }
 
 void
-SDL2TestApplicationMixer::renderGL()
+SDL3TestApplicationMixer::renderGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -162,7 +162,7 @@ SDL2TestApplicationMixer::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationMixer testapp_mixer;
+    SDL3TestApplicationMixer testapp_mixer;
     return testapp_mixer.run();
 }
 

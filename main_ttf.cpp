@@ -38,9 +38,9 @@ struct Size {
     int h;
 };
 
-class SDL2TestApplicationTTF : public SDL2TestApplication {
+class SDL3TestApplicationTTF : public SDL3TestApplication {
     public:
-        SDL2TestApplicationTTF();
+        SDL3TestApplicationTTF();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
@@ -51,8 +51,8 @@ class SDL2TestApplicationTTF : public SDL2TestApplication {
         TTF_Font *font;
 };
 
-SDL2TestApplicationTTF::SDL2TestApplicationTTF()
-    : SDL2TestApplication(1, 1)
+SDL3TestApplicationTTF::SDL3TestApplicationTTF()
+    : SDL3TestApplication(1, 1)
     , texture(0)
     , font(NULL)
 {
@@ -106,7 +106,7 @@ renderText(TTF_Font *font, struct Size *textsize, const char *text)
 }
 
 void
-SDL2TestApplicationTTF::initGL()
+SDL3TestApplicationTTF::initGL()
 {
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -126,7 +126,7 @@ SDL2TestApplicationTTF::initGL()
 }
 
 void
-SDL2TestApplicationTTF::resizeGL(int width, int height)
+SDL3TestApplicationTTF::resizeGL(int width, int height)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -164,7 +164,7 @@ draw_touch_point(TouchPoint *touch, void *user_data)
 }
 
 void
-SDL2TestApplicationTTF::renderGL()
+SDL3TestApplicationTTF::renderGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -184,7 +184,7 @@ SDL2TestApplicationTTF::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationTTF testapp_ttf;
+    SDL3TestApplicationTTF testapp_ttf;
     return testapp_ttf.run();
 }
 

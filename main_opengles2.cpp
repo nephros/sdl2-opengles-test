@@ -29,10 +29,10 @@
 
 #include "common.h"
 
-class SDL2TestApplicationGLESv2 : public SDL2TestApplication {
+class SDL3TestApplicationGLESv2 : public SDL3TestApplication {
     public:
-        SDL2TestApplicationGLESv2();
-        ~SDL2TestApplicationGLESv2();
+        SDL3TestApplicationGLESv2();
+        ~SDL3TestApplicationGLESv2();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
@@ -111,18 +111,18 @@ build_program()
     return id;
 }
 
-SDL2TestApplicationGLESv2::SDL2TestApplicationGLESv2()
-    : SDL2TestApplication(2, 0)
+SDL3TestApplicationGLESv2::SDL3TestApplicationGLESv2()
+    : SDL3TestApplication(2, 0)
 {
 }
 
-SDL2TestApplicationGLESv2::~SDL2TestApplicationGLESv2()
+SDL3TestApplicationGLESv2::~SDL3TestApplicationGLESv2()
 {
     glDeleteProgram(m_program);
 }
 
 void
-SDL2TestApplicationGLESv2::initGL()
+SDL3TestApplicationGLESv2::initGL()
 {
     glClearColor(0.3, 0.2, 0.1, 1.0);
 
@@ -130,7 +130,7 @@ SDL2TestApplicationGLESv2::initGL()
 }
 
 void
-SDL2TestApplicationGLESv2::resizeGL(int width, int height)
+SDL3TestApplicationGLESv2::resizeGL(int width, int height)
 {
     glUseProgram(m_program);
 
@@ -175,7 +175,7 @@ draw_touch_point(TouchPoint *touch, void *user_data)
 }
 
 void
-SDL2TestApplicationGLESv2::renderGL()
+SDL3TestApplicationGLESv2::renderGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -197,7 +197,7 @@ SDL2TestApplicationGLESv2::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationGLESv2 testapp_glesv2;
+    SDL3TestApplicationGLESv2 testapp_glesv2;
     return testapp_glesv2.run();
 }
 

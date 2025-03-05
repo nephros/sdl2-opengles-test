@@ -23,31 +23,31 @@ CXXFLAGS += -DDATADIR_IMAGE=\"$(DATADIR_IMAGE)\"\
 all: $(TARGETS)
 
 sdl2_opengles1_test: main_opengles1.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv1_cm)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm)
 
 sdl2_opengles2_test: main_opengles2.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv2)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv2)
 
 sdl2_image_test: main_image.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv1_cm SDL2_image)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_image)
 
 sdl2_ttf_test: main_ttf.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv1_cm SDL2_ttf)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_ttf)
 
 sdl2_joystick_test: main_joystick.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv1_cm SDL2_ttf)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_ttf)
 
 sdl2_mixer_test: main_mixer.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv1_cm SDL2_mixer audioresource glib-2.0)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_mixer audioresource glib-2.0)
 
 sdl2_gles1_procaddr_test: main_gles1_procaddr.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv1_cm egl) -ldl
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm egl) -ldl
 
 sdl2_gles2_procaddr_test: main_gles2_procaddr.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2 glesv2 egl) -ldl
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv2 egl) -ldl
 
 sdl2_renderer_test: main_renderer.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl2)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3)
 
 install: $(TARGETS) $(DESKTOPS)
 	install -d $(DESTDIR)$(PREFIX)/bin/

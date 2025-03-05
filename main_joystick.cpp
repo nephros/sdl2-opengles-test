@@ -39,9 +39,9 @@ struct Size {
     int h;
 };
 
-class SDL2TestApplicationJoystick : public SDL2TestApplication {
+class SDL3TestApplicationJoystick : public SDL3TestApplication {
     public:
-        SDL2TestApplicationJoystick();
+        SDL3TestApplicationJoystick();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
@@ -55,8 +55,8 @@ class SDL2TestApplicationJoystick : public SDL2TestApplication {
         SDL_Joystick *joy;
 };
 
-SDL2TestApplicationJoystick::SDL2TestApplicationJoystick()
-    : SDL2TestApplication(1, 1)
+SDL3TestApplicationJoystick::SDL3TestApplicationJoystick()
+    : SDL3TestApplication(1, 1)
     , texture(0)
     , font(NULL)
     , joy(NULL)
@@ -111,7 +111,7 @@ ttf_render_text(TTF_Font *font, struct Size *textsize, const char *text)
 }
 
 void
-SDL2TestApplicationJoystick::initGL()
+SDL3TestApplicationJoystick::initGL()
 {
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -147,7 +147,7 @@ SDL2TestApplicationJoystick::initGL()
 }
 
 void
-SDL2TestApplicationJoystick::resizeGL(int width, int height)
+SDL3TestApplicationJoystick::resizeGL(int width, int height)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -155,7 +155,7 @@ SDL2TestApplicationJoystick::resizeGL(int width, int height)
 }
 
 float
-SDL2TestApplicationJoystick::renderText(float x, float y, const char *fmt, ...)
+SDL3TestApplicationJoystick::renderText(float x, float y, const char *fmt, ...)
 {
     struct Size textsize;
 
@@ -192,7 +192,7 @@ SDL2TestApplicationJoystick::renderText(float x, float y, const char *fmt, ...)
 }
 
 void
-SDL2TestApplicationJoystick::renderGL()
+SDL3TestApplicationJoystick::renderGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -280,7 +280,7 @@ SDL2TestApplicationJoystick::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationJoystick testapp_joystick;
+    SDL3TestApplicationJoystick testapp_joystick;
     return testapp_joystick.run();
 }
 

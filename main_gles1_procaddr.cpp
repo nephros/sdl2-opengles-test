@@ -30,33 +30,33 @@
 
 #include "common.h"
 
-class SDL2TestApplicationGLESv1ProcAddr : public SDL2TestApplication {
+class SDL3TestApplicationGLESv1ProcAddr : public SDL3TestApplication {
     public:
-        SDL2TestApplicationGLESv1ProcAddr();
+        SDL3TestApplicationGLESv1ProcAddr();
 
         virtual void initGL();
         virtual void resizeGL(int width, int height);
         virtual void renderGL();
 };
 
-SDL2TestApplicationGLESv1ProcAddr::SDL2TestApplicationGLESv1ProcAddr()
-    : SDL2TestApplication(1, 1)
+SDL3TestApplicationGLESv1ProcAddr::SDL3TestApplicationGLESv1ProcAddr()
+    : SDL3TestApplication(1, 1)
 {
 }
 
 void
-SDL2TestApplicationGLESv1ProcAddr::initGL()
+SDL3TestApplicationGLESv1ProcAddr::initGL()
 {
     testProcAddr("libGLESv1_CM.so");
 }
 
 void
-SDL2TestApplicationGLESv1ProcAddr::resizeGL(int width, int height)
+SDL3TestApplicationGLESv1ProcAddr::resizeGL(int width, int height)
 {
 }
 
 void
-SDL2TestApplicationGLESv1ProcAddr::renderGL()
+SDL3TestApplicationGLESv1ProcAddr::renderGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 }
@@ -64,6 +64,6 @@ SDL2TestApplicationGLESv1ProcAddr::renderGL()
 int
 main(int argc, char *argv[])
 {
-    SDL2TestApplicationGLESv1ProcAddr testapp_glesv1_procaddr;
+    SDL3TestApplicationGLESv1ProcAddr testapp_glesv1_procaddr;
     return testapp_glesv1_procaddr.run();
 }
