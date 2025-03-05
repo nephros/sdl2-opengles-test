@@ -7,7 +7,7 @@ URL:		https://github.com/mer-qa/sdl2-opengles-test
 Source0:	%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(sdl3)
 BuildRequires:	pkgconfig(egl)
-#BuildRequires:  pkgconfig(glesv1_cm)
+BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(sdl3-image)
 BuildRequires:  pkgconfig(sdl3-ttf)

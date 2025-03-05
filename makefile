@@ -22,8 +22,8 @@ CXXFLAGS += -DDATADIR_IMAGE=\"$(DATADIR_IMAGE)\"\
 
 all: $(TARGETS)
 
-sdl2_opengles1_test: main_opengles1.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm)
+#sdl2_opengles1_test: main_opengles1.cpp common.cpp
+#	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm)
 
 sdl2_opengles2_test: main_opengles2.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv2)
@@ -40,8 +40,8 @@ sdl2_joystick_test: main_joystick.cpp common.cpp
 sdl2_mixer_test: main_mixer.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_mixer audioresource glib-2.0)
 
-sdl2_gles1_procaddr_test: main_gles1_procaddr.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm egl) -ldl
+#sdl2_gles1_procaddr_test: main_gles1_procaddr.cpp common.cpp
+#	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm egl) -ldl
 
 sdl2_gles2_procaddr_test: main_gles2_procaddr.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv2 egl) -ldl
