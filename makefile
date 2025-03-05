@@ -29,16 +29,16 @@ sdl2_opengles2_test: main_opengles2.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv2)
 
 sdl2_image_test: main_image.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_image)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-image)
 
 sdl2_ttf_test: main_ttf.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_ttf)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-ttf)
 
 sdl2_joystick_test: main_joystick.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_ttf)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-ttf)
 
 sdl2_mixer_test: main_mixer.cpp common.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm SDL2_mixer audioresource glib-2.0)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-mixer audioresource glib-2.0)
 
 #sdl2_gles1_procaddr_test: main_gles1_procaddr.cpp common.cpp
 #	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm egl) -ldl
