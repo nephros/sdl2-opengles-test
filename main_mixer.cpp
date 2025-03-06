@@ -34,6 +34,8 @@
 #include <audioresource.h>
 #include <glib.h>
 
+static const SDL_AudioSpec DEFAULT_SPEC = { MIX_DEFAULT_FORMAT, 2, MIX_DEFAULT_FREQUENCY };
+
 class SDL3TestApplicationMixer : public SDL3TestApplication {
     public:
         SDL3TestApplicationMixer();
@@ -51,9 +53,7 @@ class SDL3TestApplicationMixer : public SDL3TestApplication {
     public:
         bool mix_opened;
     protected:
-        const SDL_AudioSpec default_spec = { MIX_DEFAULT_FORMAT, 2, MIX_DEFAULT_FREQUENCY };
 };
-
 
 void
 on_audio_resource_acquired(audioresource_t *audio_resource, bool acquired, void *user_data)
@@ -71,7 +71,7 @@ on_audio_resource_acquired(audioresource_t *audio_resource, bool acquired, void 
 
     if (acquired && !app->mix_opened) {
         fprintf(stderr, "Audio resource acquired.\n");
-        int result = Mix_OpenAudio(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, default_spec);
+        int result = Mix_OpenAudio(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &DEFAULT_SPEC);
         if (result == -1) {
             printf("Mix_OpenAudio: %s\n", SDL_GetError());
             exit(1);
