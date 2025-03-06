@@ -132,12 +132,14 @@ SDL3TestApplicationJoystick::initGL()
     // Initialize the joystick subsystem
     SDL_InitSubSystem(SDL_INIT_JOYSTICK);
 
-    if (SDL_NumJoysticks() > 0) {
+    SDL_JoystickID sticks = SDL_GetJoysticks(int* numj);
+    SDL_free(sticks);
+    if (numj != NULL) {
         // Open joystick
-        joy = SDL_JoystickOpen(0);
+        joy = SDL_OpenJoystick(0);
 
         if (joy) {
-            printf("Joystick name: %s\n", SDL_JoystickNameForIndex(0));
+            printf("Joystick name: %s\n", SDL_GetJoystickNameForID(0));
         } else {
             printf("Couldn't open Joystick 0\n");
         }
@@ -207,22 +209,22 @@ SDL3TestApplicationJoystick::renderGL()
 
     float y = 0.f;
     if (joy) {
-        TEXTOUT("Name: %s", SDL_JoystickNameForIndex(0));
+        TEXTOUT("Name: %s", SDL_GetJoystickNameForID(0));
         TEXTOUT("Axes: %d, Buttons: %d, Balls: %d, Hats: %d",
-                SDL_JoystickNumAxes(joy),
-                SDL_JoystickNumButtons(joy),
-                SDL_JoystickNumBalls(joy),
-                SDL_JoystickNumHats(joy));
+                SDL_GetNumJoystickAxes(joy),
+                SDL_GetNumJoystickButtons(joy),
+                SDL_GetNumJoystickBalls(joy),
+                SDL_GetNumJoystickHats(joy));
 
         TEXTOUT("---");
-        for (int i=0; i<SDL_JoystickNumAxes(joy); i++) {
-            TEXTOUT("Axis %d: %d", i, SDL_JoystickGetAxis(joy, i));
+        for (int i=0; i<SDL_GetNumJoystickAxes(joy); i++) {
+            TEXTOUT("Axis %d: %d", i, SDL_GetJoystickAxis(joy, i));
         }
 
         TEXTOUT("---");
         bool anyPressed = false;
-        for (int i=0; i<SDL_JoystickNumButtons(joy); i++) {
-            if (SDL_JoystickGetButton(joy, i)) {
+        for (int i=0; i<SDL_GetNumJoystickButtons(joy); i++) {
+            if (SDL_GetJoystickButton(joy, i)) {
                 TEXTOUT("Button %d pressed", i);
                 anyPressed = true;
             }
@@ -232,19 +234,19 @@ SDL3TestApplicationJoystick::renderGL()
         }
 
         TEXTOUT("---");
-        for (int i=0; i<SDL_JoystickNumBalls(joy); i++) {
+        for (int i=0; i<SDL_GetNumJoystickBalls(joy); i++) {
             int dx = 0, dy = 0;
-            SDL_JoystickGetBall(joy, i, &dx, &dy);
+            SDL_GetJoystickBall(joy, i, &dx, &dy);
             TEXTOUT("Axis %d: (%d,%d)", i, dx, dy);
         }
 
         TEXTOUT("---");
-        for (int i=0; i<SDL_JoystickNumHats(joy); i++) {
+        for (int i=0; i<SDL_GetNumJoystickHats(joy); i++) {
             const char *hatState;
 
 #define CASE_HAT_STATE(x) case x: hatState = #x; break
 
-            switch (SDL_JoystickGetHat(joy, i)) {
+            switch (SDL_GetJoystickHat(joy, i)) {
                 CASE_HAT_STATE(SDL_HAT_CENTERED);
                 CASE_HAT_STATE(SDL_HAT_UP);
                 CASE_HAT_STATE(SDL_HAT_RIGHT);
@@ -262,7 +264,7 @@ SDL3TestApplicationJoystick::renderGL()
 #undef CASE_HAT_STATE
 
             TEXTOUT("Hat %d: %s (%d)", i, hatState,
-                    SDL_JoystickGetHat(joy, i));
+                    SDL_GetJoystickHat(joy, i));
         }
 
     } else {
