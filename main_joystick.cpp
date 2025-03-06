@@ -122,20 +122,28 @@ SDL3TestApplicationJoystick::initGL()
     // Initialize the joystick subsystem
     SDL_InitSubSystem(SDL_INIT_JOYSTICK);
 
-    SDL_JoystickID sticks = SDL_GetJoysticks(int* numj);
-    SDL_free(sticks);
-    if (numj != NULL) {
-        // Open joystick
-        joy = SDL_OpenJoystick(0);
+    int numj;
+    SDL_JoystickID *sticks = SDL_GetJoysticks(&numj);
+    if (sticks == NULL) {
+        printf("Failed to enumerate Joysticks: %s\n", SDL_GetError());
+        return;
+    }
+    if (numj > 0 ) {
+        printf("Found %d joysticks.\n ", numj);
+        for (int i = 0; i < numj; ++i) {
+            // Open joystick
+            joy = SDL_OpenJoystick(sticks[i]);
 
-        if (joy) {
-            printf("Joystick name: %s\n", SDL_GetJoystickNameForID(0));
-        } else {
-            printf("Couldn't open Joystick 0\n");
+            if (joy) {
+                printf("Joystick name: %s\n", SDL_GetJoystickNameForID(i));
+            } else {
+                printf("Couldn't open Joystick %d: %s\n", i, SDL_GetError());
+            }
         }
     } else {
         printf("No joysticks connected\n");
     }
+    SDL_free(&sticks);
 }
 
 void
