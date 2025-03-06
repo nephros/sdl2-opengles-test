@@ -64,10 +64,10 @@ renderText(TTF_Font *font, struct Size *textsize, const char *text)
     // Assumption: NPOT Texture Support
 
     SDL_Color white = {0xff, 0xff, 0xff, 0xff};
-    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text, white);
+    SDL_Surface *surface = TTF_RenderText_Blended(font, text, 0, white);
 
     if (surface == NULL) {
-        printf("TTF_RenderUTF8_Blended: %s\n", TTF_GetError());
+        printf("TTF_RenderText_Blended: %s\n", SDL_GetError());
         exit(0);
     }
 
