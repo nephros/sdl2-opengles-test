@@ -24,7 +24,7 @@
  *
  **/
 
-
+#include <stdlib.h> // just for exit
 #include <GLES/gl.h>
 
 #include "common.h"
