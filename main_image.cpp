@@ -86,7 +86,7 @@ textureFromImage(const char *filename, enum TextureImage::Format format)
         fmt.Bmask = 0x00ff0000;
         fmt.Amask = 0xff000000;
     } else {
-        fmt.format = SDL_PIXELFORMAT_RGB888;
+        fmt.format = SDL_PIXELFORMAT_XRGB8888;
         fmt.BitsPerPixel = 24;
         fmt.BytesPerPixel = 3;
         fmt.Rmask = 0x0000ff;
