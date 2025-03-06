@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Name=SDL2 Joystick
+Name=SDL2 Mixer
 Icon=icon-launcher-component-gallery
-Exec=/usr/bin/sdl2_joystick_test
+Exec=/usr/bin/sdl3_mixer_test

@@ -1,5 +1,5 @@
 
-PACKAGE := sdl2-opengles-test
+PACKAGE := sdl3-opengles-test
 
 SOURCES := $(wildcard main_*.cpp)
 TARGETS := $(patsubst main_%.cpp,sdl3_%_test,$(SOURCES))
@@ -9,10 +9,10 @@ DESTDIR ?=
 PREFIX ?= /usr
 
 BASEDATADIR := $(PREFIX)/share/
-DATADIR_IMAGE := $(BASEDATADIR)/sdl2_image_test/
-DATADIR_JOYSTICK := $(BASEDATADIR)/sdl2_joystick_test/
-DATADIR_MIXER := $(BASEDATADIR)/sdl2_mixer_test/
-DATADIR_TTF := $(BASEDATADIR)/sdl2_ttf_test/
+DATADIR_IMAGE := $(BASEDATADIR)/sdl3_image_test/
+DATADIR_JOYSTICK := $(BASEDATADIR)/sdl3_joystick_test/
+DATADIR_MIXER := $(BASEDATADIR)/sdl3_mixer_test/
+DATADIR_TTF := $(BASEDATADIR)/sdl3_ttf_test/
 
 CXXFLAGS ?= -g
 CXXFLAGS += -DDATADIR_IMAGE=\"$(DATADIR_IMAGE)\"\
@@ -25,28 +25,28 @@ all: $(TARGETS)
 #sdl2_opengles1_test: main_opengles1.cpp common.cpp
 #	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm)
 
-sdl2_opengles2_test: main_opengles2.cpp common.cpp
+sdl3_opengles2_test: main_opengles2.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv2)
 
-sdl2_image_test: main_image.cpp common.cpp
+sdl3_image_test: main_image.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-image)
 
-sdl2_ttf_test: main_ttf.cpp common.cpp
+sdl3_ttf_test: main_ttf.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-ttf)
 
-sdl2_joystick_test: main_joystick.cpp common.cpp
+sdl3_joystick_test: main_joystick.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-ttf)
 
-sdl2_mixer_test: main_mixer.cpp common.cpp
+sdl3_mixer_test: main_mixer.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm sdl3-mixer audioresource glib-2.0)
 
-#sdl2_gles1_procaddr_test: main_gles1_procaddr.cpp common.cpp
+#sdl3_gles1_procaddr_test: main_gles1_procaddr.cpp common.cpp
 #	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv1_cm egl) -ldl
 
-sdl2_gles2_procaddr_test: main_gles2_procaddr.cpp common.cpp
+sdl3_gles2_procaddr_test: main_gles2_procaddr.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3 glesv2 egl) -ldl
 
-sdl2_renderer_test: main_renderer.cpp common.cpp
+sdl3_renderer_test: main_renderer.cpp common.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(shell pkg-config --libs --cflags sdl3)
 
 install: $(TARGETS) $(DESKTOPS)
