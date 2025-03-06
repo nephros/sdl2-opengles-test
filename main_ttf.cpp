@@ -141,7 +141,7 @@ draw_touch_point(TouchPoint *touch, void *user_data)
 
     struct Size textsize;
     char tmp[1024];
-    snprintf(tmp, sizeof(tmp), "Touch %d: %.2f/%.2f", (Uint64) touch->id, touch->x, touch->y);
+    snprintf(tmp, sizeof(tmp), "Touch %llu: %.2f/%.2f", touch->id, touch->x, touch->y);
 
     renderText(font, &textsize, tmp);
 
