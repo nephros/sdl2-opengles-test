@@ -71,7 +71,7 @@ on_audio_resource_acquired(audioresource_t *audio_resource, bool acquired, void 
         fprintf(stderr, "Audio resource acquired.\n");
         int result = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024);
         if (result == -1) {
-            printf("Mix_OpenAudio: %s\n", Mix_GetError());
+            printf("Mix_OpenAudio: %s\n", SDL_GetError());
             exit(1);
         }
 
@@ -111,7 +111,7 @@ SDL3TestApplicationMixer::initGL()
 
     int result = Mix_Init(flags);
     if ((result & flags) != flags) {
-        printf("Mix_Init: %s\n", Mix_GetError());
+        printf("Mix_Init: %s\n", SDL_GetError());
         exit(1);
     }
 
@@ -130,7 +130,7 @@ SDL3TestApplicationMixer::initGL()
 
     sample = Mix_LoadWAV(DATADIR_MIXER "95328__ramas26__c.ogg");
     if (sample == NULL) {
-        printf("Mix_LoadWAV: %s\n", Mix_GetError());
+        printf("Mix_LoadWAV: %s\n", SDL_GetError());
         exit(1);
     }
 }

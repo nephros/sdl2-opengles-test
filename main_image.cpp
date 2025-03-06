@@ -71,7 +71,7 @@ textureFromImage(const char *filename, enum TextureImage::Format format)
 
     SDL_Surface *surface = IMG_Load(filename);
     if (surface == NULL) {
-        printf("IMG_Load: %s\n", IMG_GetError());
+        printf("IMG_Load: %s\n", SDL_GetError());
         exit(0);
     }
 
@@ -137,7 +137,7 @@ SDL3TestApplicationImage::initGL()
 
     int result = IMG_Init(flags);
     if (result != flags) {
-        printf("IMG_Init: %s\n", IMG_GetError());
+        printf("IMG_Init: %s\n", SDL_GetError());
         return;
     }
 

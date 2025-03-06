@@ -120,7 +120,7 @@ SDL3TestApplicationJoystick::initGL()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     if (TTF_Init() == -1) {
-        printf("TTF_Init: %s\n", TTF_GetError());
+        printf("TTF_Init: %s\n", SDL_GetError());
         return;
     }
 
