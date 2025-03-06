@@ -48,12 +48,16 @@ SDL3TestApplicationRenderer::SDL3TestApplicationRenderer()
 void
 SDL3TestApplicationRenderer::initGL()
 {
-    m_renderer = SDL_CreateRenderer(m_window, -1,
-            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
+    SDL_PropertiesID props = SDL_CreateProperties();
+    //SDL_SetNumberProperty(props, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER , SDL_RENDERER_VSYNC_DISABLED );
+    SDL_SetNumberProperty(props, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER , SDL_RENDERER_VSYNC_ADAPTIVE );
 
-    SDL_RendererInfo sri;
-    if (SDL_GetRendererInfo(m_renderer, &sri) == 0) {
-        printf("Renderer backend: %s\n", sri.name);
+    m_renderer = SDL_CreateRendererWithProperties(props);
+    SDL_DestroyProperties(props);
+
+    const char* sriname = SDL_GetRendererName(m_renderer);
+    if (sriname != 0) {
+        printf("Renderer backend: %s\n", sriname);
     } else {
         printf("Could not get renderer info\n");
     }
