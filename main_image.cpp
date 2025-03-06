@@ -118,14 +118,6 @@ SDL3TestApplicationImage::initGL()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    int flags = IMG_INIT_JPG | IMG_INIT_PNG;
-
-    int result = IMG_Init(flags);
-    if (result != flags) {
-        printf("IMG_Init: %s\n", SDL_GetError());
-        return;
-    }
-
     texture_from_png = textureFromImage(DATADIR_IMAGE "SDL_logo.png", TextureImage::RGBA);
     texture_from_jpg = textureFromImage(DATADIR_IMAGE "sailfish-site-bg_small.jpg", TextureImage::RGB);
 }
