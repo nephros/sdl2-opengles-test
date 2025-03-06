@@ -72,17 +72,7 @@ renderText(TTF_Font *font, struct Size *textsize, const char *text)
         exit(0);
     }
 
-    SDL_PixelFormat fmt;
-    memset(&fmt, 0, sizeof(fmt));
-    fmt.format = SDL_PIXELFORMAT_RGBA8888;
-    fmt.BitsPerPixel = 32;
-    fmt.BytesPerPixel = 4;
-    fmt.Rmask = 0x000000ff;
-    fmt.Gmask = 0x0000ff00;
-    fmt.Bmask = 0x00ff0000;
-    fmt.Amask = 0xff000000;
-
-    SDL_Surface *tmp = SDL_ConvertSurface(surface, fmt);
+    SDL_Surface *tmp = SDL_ConvertSurface(surface, SDL_PIXELFORMAT_RGBA8888);
     SDL_DestroySurface(surface);
 
     if (tmp == NULL) {

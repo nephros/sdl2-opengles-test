@@ -76,25 +76,9 @@ textureFromImage(const char *filename, enum TextureImage::Format format)
         exit(0);
     }
 
-    SDL_PixelFormat fmt;
-    memset(&fmt, 0, sizeof(fmt));
-    if (format == TextureImage::RGBA) {
-        fmt.format = SDL_PIXELFORMAT_RGBA8888;
-        fmt.BitsPerPixel = 32;
-        fmt.BytesPerPixel = 4;
-        fmt.Rmask = 0x000000ff;
-        fmt.Gmask = 0x0000ff00;
-        fmt.Bmask = 0x00ff0000;
-        fmt.Amask = 0xff000000;
-    } else {
-        fmt.format = SDL_PIXELFORMAT_XRGB8888;
-        fmt.BitsPerPixel = 24;
-        fmt.BytesPerPixel = 3;
-        fmt.Rmask = 0x0000ff;
-        fmt.Gmask = 0x00ff00;
-        fmt.Bmask = 0xff0000;
-        fmt.Amask = 0x000000;
-    }
+    SDL_PixelFormat fmt = (format == TextureImage::RGBA)
+        ? SDL_PIXELFORMAT_RGBA8888
+        : SDL_PIXELFORMAT_XRGB8888;
 
     SDL_Surface *tmp = SDL_ConvertSurface(surface, fmt);
     SDL_DestroySurface(surface);
