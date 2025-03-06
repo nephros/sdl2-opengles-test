@@ -86,8 +86,8 @@ ttf_render_text(TTF_Font *font, struct Size *textsize, const char *text)
     fmt.Bmask = 0x00ff0000;
     fmt.Amask = 0xff000000;
 
-    SDL_Surface *tmp = SDL_ConvertSurface(surface, &fmt, 0);
-    SDL_FreeSurface(surface);
+    SDL_Surface *tmp = SDL_ConvertSurface(surface, fmt);
+    SDL_DestroySurface(surface);
 
     if (tmp == NULL) {
         printf("SDL_ConvertSurface: %s\n", SDL_GetError());
@@ -107,7 +107,7 @@ ttf_render_text(TTF_Font *font, struct Size *textsize, const char *text)
             GL_RGBA, GL_UNSIGNED_BYTE, tmp->pixels);
     SDL_UnlockSurface(tmp);
 
-    SDL_FreeSurface(tmp);
+    SDL_DestroySurface(tmp);
 }
 
 void

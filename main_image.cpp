@@ -95,8 +95,8 @@ textureFromImage(const char *filename, enum TextureImage::Format format)
         fmt.Amask = 0x000000;
     }
 
-    SDL_Surface *tmp = SDL_ConvertSurface(surface, &fmt, 0);
-    SDL_FreeSurface(surface);
+    SDL_Surface *tmp = SDL_ConvertSurface(surface, fmt);
+    SDL_DestroySurface(surface);
 
     if (tmp == NULL) {
         printf("SDL_ConvertSurface: %s\n", SDL_GetError());
@@ -119,7 +119,7 @@ textureFromImage(const char *filename, enum TextureImage::Format format)
 
     glBindTexture(GL_TEXTURE_2D, 0);
 
-    SDL_FreeSurface(tmp);
+    SDL_DestroySurface(tmp);
 
     return id;
 }
