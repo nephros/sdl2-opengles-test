@@ -2,7 +2,7 @@
 PACKAGE := sdl2-opengles-test
 
 SOURCES := $(wildcard main_*.cpp)
-TARGETS := $(patsubst main_%.cpp,sdl2_%_test,$(SOURCES))
+TARGETS := $(patsubst main_%.cpp,sdl3_%_test,$(SOURCES))
 DESKTOPS := $(patsubst %,%.desktop,$(TARGETS))
 
 DESTDIR ?=
