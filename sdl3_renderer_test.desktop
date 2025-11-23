@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Name=SDL2 Renderer
+Name=SDL3 Renderer
 Icon=icon-launcher-component-gallery
 Exec=/usr/bin/sdl3_renderer_test

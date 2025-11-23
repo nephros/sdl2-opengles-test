@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Name=SDL2 ES1 Test
+Name=SDL3 ES1 Test
 Icon=icon-launcher-component-gallery
 Exec=/usr/bin/sdl3_opengles1_test
